@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
+import Head from "next/head";
 import { useRef, useState } from "react";
 import AddVideoModal from "../components/AddVideoModal";
 import EditModal from "../components/EditModal";
@@ -68,50 +69,56 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full max-w-[1188px] mx-auto">
-      <h1 className="text-2xl font-semibold text-green-600 text-center my-8">
-        Video Gallery
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 grid-rows-1 mt-10">
-        {data?.getAllVideos?.map((item) => (
-          <VideoCard
-            item={item}
-            setEditModal={setEditModal}
-            setEditInfo={setEditInfo}
-            removeVideo={removeVideo}
-            key={item.id}
-          />
-        ))}
+    <>
+      <Head>
+        <title>Video Gallery</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <div className="w-full max-w-[1188px] mx-auto">
+        <h1 className="text-2xl font-semibold text-green-600 text-center my-8">
+          Video Gallery
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 grid-rows-1 mt-10">
+          {data?.getAllVideos?.map((item) => (
+            <VideoCard
+              item={item}
+              setEditModal={setEditModal}
+              setEditInfo={setEditInfo}
+              removeVideo={removeVideo}
+              key={item.id}
+            />
+          ))}
+        </div>
+        <div className="flex justify-center my-8">
+          <button
+            onClick={() => setVideoAddModal(true)}
+            className="focus:outline-none bg-green-700 px-8 py-2 rounded-md text-white shadow-md"
+          >
+            Add More Video
+          </button>
+        </div>
+
+        {/* add video modal */}
+        <AddVideoModal
+          videoAddModal={videoAddModal}
+          setVideoAddModal={setVideoAddModal}
+          setTitle={setTitle}
+          setSrc={setSrc}
+          addVideoHandler={addVideoHandler}
+        />
+
+        {/* add video modal end */}
+
+        {/* edit modal */}
+        <EditModal
+          editModal={editModal}
+          setEditModal={setEditModal}
+          setTitleEdit={setTitleEdit}
+          setSrcEdit={setSrcEdit}
+          editVideoHandler={editVideoHandler}
+        />
+        {/* edit modal end */}
       </div>
-      <div className="flex justify-center my-8">
-        <button
-          onClick={() => setVideoAddModal(true)}
-          className="focus:outline-none bg-green-700 px-8 py-2 rounded-md text-white shadow-md"
-        >
-          Add More Video
-        </button>
-      </div>
-
-      {/* add video modal */}
-      <AddVideoModal
-        videoAddModal={videoAddModal}
-        setVideoAddModal={setVideoAddModal}
-        setTitle={setTitle}
-        setSrc={setSrc}
-        addVideoHandler={addVideoHandler}
-      />
-
-      {/* add video modal end */}
-
-      {/* edit modal */}
-      <EditModal
-        editModal={editModal}
-        setEditModal={setEditModal}
-        setTitleEdit={setTitleEdit}
-        setSrcEdit={setSrcEdit}
-        editVideoHandler={editVideoHandler}
-      />
-      {/* edit modal end */}
-    </div>
+    </>
   );
 }
