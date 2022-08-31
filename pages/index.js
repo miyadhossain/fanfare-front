@@ -86,7 +86,7 @@ export default function Home() {
       <div className="flex justify-center my-8">
         <button
           onClick={() => setVideoAddModal(true)}
-          className="focus:outline-none bg-green-500 px-8 py-2 rounded-md text-white shadow-md"
+          className="focus:outline-none bg-green-700 px-8 py-2 rounded-md text-white shadow-md"
         >
           Add More Video
         </button>

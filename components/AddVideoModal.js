@@ -65,7 +65,7 @@ const AddVideoModal = ({
                           </div>
                         </div>
                         <div className="w-full">
-                          <AppInputLabel labelTitle="Video Src" />
+                          <AppInputLabel labelTitle="Embeded Video Src" />
                           <div className="flex">
                             <AppInput
                               onChange={(e) => setSrc(e.target.value)}
@@ -83,13 +83,13 @@ const AddVideoModal = ({
                   <button
                     onClick={() => addVideoHandler()}
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
+                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-green-700 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-800 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
                   >
                     Add
                   </button>
                   <button
                     type="button"
-                    className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                    className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                     onClick={() => setVideoAddModal(false)}
                     ref={cancelButtonRef}
                   >
