@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import Head from "next/head";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import AddVideoModal from "../components/AddVideoModal";
 import EditModal from "../components/EditModal";
 import LoadingSpinner from "../components/LoadingSpinner";
@@ -32,14 +32,13 @@ export default function Home() {
   const [src, setSrc] = useState(null);
   const [titleEdit, setTitleEdit] = useState(null);
   const [srcEdit, setSrcEdit] = useState(null);
-  const cancelButtonRef = useRef(null);
 
-  if (loading)
-    return (
-      <div className="h-screen flex justify-center items-center">
-        <LoadingSpinner />
-      </div>
-    );
+  // if (loading)
+  //   return (
+  //     <div className="h-screen flex justify-center items-center">
+  //       <LoadingSpinner />
+  //     </div>
+  //   );
 
   const addVideoHandler = () => {
     createVideo({
@@ -78,6 +77,11 @@ export default function Home() {
         <h1 className="text-2xl font-semibold text-green-600 text-center my-8">
           Video Gallery
         </h1>
+        {loading && (
+          <div className="h-screen flex justify-center items-center">
+            <LoadingSpinner />
+          </div>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 grid-rows-1 mt-10">
           {data?.getAllVideos?.map((item) => (
             <VideoCard
